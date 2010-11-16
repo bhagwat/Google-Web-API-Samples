@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Google Translate</title>
+	<script src="http://www.google.com/jsapi?key=AIzaSyBhCU4ibJWArG7mh-E9V8aWxEhZYY_G8ZE" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		google.load("jquery", "1.4.4");
+		google.load("language", "1");
+
+		function translate() {
+			var content = $('#textToTranslate').val();
+			// Translate from English to Hindi, and have the callback of the request
+			// Empty string for the source language then the translation will auto-detect it.
+			google.language.translate(content, 'en', 'hi', function(result) {
+				$('#result').text(result.translation || "Unable to translate");
+			});
+		}
+
+	</script>
+</head>
+
+<body>
+<div style="width:100%;">
+	<textarea id="textToTranslate" rows="10" columns="100" onkeyup="translate()" style="width:100%; height:100%;"></textarea>
+</div>
+<div id="result" style="width:100%; height:200px;margin-top:20px;"></div>
+
+<div>
+	<a target="_blank" href="http://code.google.com/apis/ajax/playground/?exp=maps#translate">Test Code</a>
+	<a target="_blank" href="http://code.google.com/apis/language/translate/v1/reference.html">Documentation</a>
+</div>
+</body>
+</html>

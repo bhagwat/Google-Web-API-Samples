@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Google Search</title>
+	<script src="http://www.google.com/jsapi?key=AIzaSyBhCU4ibJWArG7mh-E9V8aWxEhZYY_G8ZE" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		google.load("search", "1");
+
+		function showSearch() {
+			// Create a search control
+			var searchControl = new google.search.SearchControl();
+
+			// Add in a full set of searchers
+			var localSearch = new google.search.LocalSearch();
+			searchControl.addSearcher(new google.search.ImageSearch());
+			searchControl.addSearcher(new google.search.BlogSearch());
+
+			// localSearch, VideoSearch, NewsSearch, BookSearch, PatentSearch, WebSearch
+
+			// Set the Local Search center point
+			localSearch.setCenterPoint("India");
+
+			// tell the searcher to draw itself and tell it where to attach
+			searchControl.draw(document.getElementById("canvas"));
+
+			// execute an inital search
+			searchControl.execute("Bhagwat Kumar");
+		}
+
+		google.setOnLoadCallback(showSearch);
+	</script>
+</head>
+
+<body><div id="canvas" style="width:100%;"></div>
+<div>
+	<a target="_blank" href="http://code.google.com/apis/ajax/playground/?exp=maps#the_hello_world_of_general_search">Test Code</a>
+	<a target="_blank" href="http://code.google.com/apis/websearch/docs/reference.html#_class_GSearch">Documentation</a>
+</div>
+</body>
+</html>

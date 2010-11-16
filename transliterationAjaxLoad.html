@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Google Transliteration</title>
+	<script src="http://www.google.com/jsapi?key=AIzaSyBhCU4ibJWArG7mh-E9V8aWxEhZYY_G8ZE" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		google.load("elements", "1", {packages: "transliteration"});
+		function enableTransliteration() {
+			var options = {
+				sourceLanguage: "en", destinationLanguage: ["hi"], shortcutKey: 'ctrl+g', transliterationEnabled: true
+			};
+
+			// Create an instance on TransliterationControl with the required
+			// options.
+			var control = new google.elements.transliteration.TransliterationControl(options);
+
+			// Enable transliteration in the textbox with id 'transliterateTextarea'.
+			control.makeTransliteratable(['textToTranslate']);
+		}
+
+	</script>
+</head>
+
+<body onload="enableTransliteration()">
+<div style="width:100%;height:60%;">
+	<textarea id="textToTranslate" rows="20" columns="100" onkeyup="translate()" style="width:100%; height:200px;"></textarea>
+</div>
+<div id="result" style="width:100%; height:100px;margin-top:20px;"></div>
+<div>
+	<a target="_blank" href="http://code.google.com/apis/ajax/playground/?exp=maps#transliterate_hindi">Test Code</a>
+	<a target="_blank" href="http://code.google.com/apis/language/transliterate/v1/reference.html">Documentation</a>
+</div>
+</body>
+</html>
